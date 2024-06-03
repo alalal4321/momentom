@@ -1,6 +1,7 @@
 const loginForm = document.querySelector("#login-form");
 const loginInput = document.querySelector("#login-form input");
 const greeting = document.querySelector("#greeting");
+const loginbtn = document.querySelector("#login-form button")
 
 const HIDDEN_CLASSNAME = "hidden";
 const USERNMAE_KEY = "username";
@@ -23,6 +24,7 @@ const savedUsername = localStorage.getItem(USERNMAE_KEY);
 if(savedUsername === null){
     loginForm.classList.remove(HIDDEN_CLASSNAME); // 만약 localstorage가 null 이라면 hidden 클래스 제거
     loginForm.addEventListener("submit",onLoginSubmit); // 그리고 submit를 누르면 이벤트 발생
+    loginbtn.addEventListener("click",onLoginSubmit);
 } else {
     paintGreeting(); // null이 아니라면 paintGreeting 함수 실행
 }

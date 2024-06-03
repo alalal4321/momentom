@@ -6,15 +6,15 @@ function onGeoOk(position) {
     const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
     fetch(url).then((response) => response.json())
     .then((data) => {
-        const weatherContainer = document.querySelector("#weather span:first-child");
-        const cityContainer = document.querySelector("#weather span:last-child");
+        const cityContainer = document.querySelector("#weather span:first-child");
+        const weatherContainer = document.querySelector("#weather span:last-child");
         cityContainer.innerText = data.name;
-        weatherContainer.innerText = `${data.weather[0].main} / ${data.main.temp}`;
+        weatherContainer.innerText = `${data.weather[0].main} / ${parseInt(data.main.temp)}°C`;
     });
 }
 
 function onGeoError(){
-    alert("can't find you.")
+   
 }
 
 navigator.geolocation.getCurrentPosition(onGeoOk, onGeoError);
